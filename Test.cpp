@@ -4,17 +4,19 @@
 
 std::fstream GetFile(std::string FileName)
 {
-    std::fstream file;
-    file.open(FileName,(std::ios::in,std::ios::out));
+    std::fstream file(FileName);
+    file.open(FileName,std::ios::out | std::ios::app | std::ios::in);
     return file;
 }
 
 int main()
 {
-    std::fstream file = GetFile("settings.txt");
-    std::vector<std::string> stuff;
-    file.
-    file.get(b);
-    std::cout<<"stuff: "<<b<<'\n';
+    std::string FileName = "settings.txt";
+    std::fstream file = GetFile(FileName);
+    std::string stuff;
+    file.write("abc",3);
+    file.seekg(0);
+    std::getline(file,stuff);
+    std::cout<<"stuff: "<<stuff<<'\n';
 }
 
